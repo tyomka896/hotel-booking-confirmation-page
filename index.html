@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+
+        <title>Hotel booking confirmation page</title>
+    </head>
+    <body
+        class="grid min-h-screen grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[auto_1fr] lg:grid-rows-1"
+    >
+        <header class="border-b border-neutral-400 px-4 py-5 lg:w-70 lg:border-r">
+            <div class="flex flex-row items-center justify-between">
+                <img src="/assets/images/logo.svg" class="h-12" />
+
+                <button
+                    class="flex size-10 items-center justify-center rounded-md border border-neutral-400 lg:hidden"
+                >
+                    <img src="/assets/images/icon-menu.svg" class="size-6" />
+                </button>
+            </div>
+
+            <nav class="">
+                <ul x-data="navLinks">
+                    <template x-for="link in links" :key="link.text">
+                        <li>
+                            <a :href="`#${link.href}`" class="flex flex-row items-center p-2">
+                                <img :src="`/assets/images/${link.icon}`" class="mr-2 size-6" />
+                                <span x-text="link.text"></span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+
+                <!-- Local weather -->
+                Today in Cassis 27° Sunny · light breeze Est. 1987 Maison Soleil · 12 Rue des
+                Oliviers · Cassis © 2026 Maison Soleil
+            </nav>
+        </header>
+
+        <section class="mx-auto w-full max-w-7xl space-y-16 px-4 py-6">
+            <div class="space-y-4">
+                <div class="font-mono text-neutral-600 uppercase">Booking · Confirmed</div>
+
+                <div class="flex flex-col justify-between gap-y-6 md:flex-row">
+                    <p class="font-base flex gap-x-2 text-5xl font-medium">
+                        <span class="text-neutral-800">Bienvenue,</span>
+                        <span class="text-terracotta-400 italic">Lucia.</span>
+                    </p>
+
+                    <div x-data="heroButtons" class="flex flex-row gap-4">
+                        <template x-for="button in buttons" :key="button.text">
+                            <button
+                                x-text="button.text"
+                                class="flex-1 rounded-full border border-neutral-400 px-6 py-2 font-sans text-lg font-bold text-nowrap md:text-xl"
+                                :class="button.class"
+                            ></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="group relative mx-auto grid max-w-4xl cursor-pointer grid-cols-1 grid-rows-2 justify-items-center gap-y-10 px-2 xl:grid-cols-2 xl:grid-rows-1 xl:overflow-visible"
+            >
+                <div
+                    class="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 xl:block"
+                >
+                    <img src="/assets/images/illustration-sun.svg" class="size-40" />
+                </div>
+
+                <article
+                    class="shadow-neutral-warm order-2 flex w-full max-w-140 min-w-80 -rotate-2 flex-col space-y-4 rounded-xl bg-neutral-50 p-6 duration-150 xl:order-1 xl:-mr-2 xl:-rotate-3 xl:transition-[translate,rotate] xl:group-hover:-translate-x-28 xl:group-hover:rotate-3"
+                >
+                    <div class="flex flex-row justify-between">
+                        <div class="flex flex-col gap-y-1">
+                            <p class="font-mono text-sm text-neutral-600 uppercase">Receipt</p>
+
+                            <h2 class="font-base text-2xl">Your stay</h2>
+                        </div>
+
+                        <div
+                            class="flex flex-col text-right font-mono text-sm text-neutral-600 uppercase"
+                        >
+                            <span>№ MS-2026</span>
+                            <span>0421-AH</span>
+                        </div>
+                    </div>
+
+                    <hr class="border-dashed opacity-30" />
+
+                    <div class="flex flex-row justify-between">
+                        <div class="flex flex-col items-center gap-y-2">
+                            <p class="mb-2 font-mono text-sm text-neutral-600 uppercase">
+                                Check in
+                            </p>
+                            <h2 class="font-base text-4xl">25 Apr</h2>
+                            <p class="font-sans text-neutral-600">Saturday · 15:00</p>
+                        </div>
+
+                        <div class="flex flex-col items-center gap-y-2">
+                            <p class="mb-2 font-mono text-sm text-neutral-600 uppercase">
+                                Check out
+                            </p>
+                            <h2 class="font-base text-4xl">29 Apr</h2>
+                            <p class="font-sans text-neutral-600">Wednesday · 11:00</p>
+                        </div>
+                    </div>
+
+                    <hr class="border-dashed opacity-30" />
+
+                    <ul class="flex flex-col justify-between gap-y-2">
+                        <li class="flex justify-between gap-4">
+                            <span>Room · La Garrigue x 4 nights</span>
+                            <span class="font-mono">€ 620.00</span>
+                        </li>
+
+                        <li class="flex justify-between gap-4">
+                            <span>Breakfast × 2 guests</span>
+                            <span class="font-mono">€ 96.00</span>
+                        </li>
+
+                        <li class="flex justify-between gap-4">
+                            <span class="text-neutral-700">Tourist tax</span>
+                            <span class="font-mono text-neutral-700">€ 14.40</span>
+                        </li>
+                    </ul>
+
+                    <hr class="opacity-80" />
+
+                    <div class="flex flex-col justify-between gap-y-6">
+                        <div class="flex flex-row items-center justify-between">
+                            <span class="font-mono text-neutral-600 uppercase"> Total paid </span>
+                            <span class="font-base text-2xl">€ 730.40</span>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between">
+                            <span class="font-mono text-neutral-600 uppercase">
+                                Paid · Wise · GBP
+                            </span>
+                            <img src="/assets/images/icon-barcode.svg" />
+                        </div>
+                    </div>
+                </article>
+
+                <article
+                    class="bg-terracotta-700 bg-glow-warm shadow-terracotta-warm flex w-full max-w-140 min-w-80 rotate-2 flex-col space-y-4 rounded-xl p-6 text-neutral-100 xl:order-2 xl:-ml-2 xl:rotate-3 xl:transition-[translate,rotate] xl:group-hover:translate-x-28 xl:group-hover:-rotate-3"
+                >
+                    <hr class="border-dashed opacity-30" />
+
+                    <div class="flex justify-between">
+                        <span class="font-mono text-sm text-neutral-400 uppercase">
+                            Welcome Card
+                        </span>
+                        <img src="/assets/images/icon-sun.svg" class="size-15" />
+                    </div>
+
+                    <div class="font-base flex flex-col gap-y-2 italic">
+                        <p class="text-sun-300 text-lg">A note from your host,</p>
+                        <p class="text-5xl">Margaux.</p>
+                    </div>
+
+                    <p class="text-sun-50 mt-6 text-lg">
+                        We're so glad you're coming. The shutters will be open, the lemonade cold,
+                        and the cat - Poivre - pretending not to notice you.
+                    </p>
+
+                    <div class="mt-auto flex flex-col gap-y-2">
+                        <span class="font-mono text-sm text-neutral-400 uppercase"> Room </span>
+                        <p class="font-base text-2xl font-light">La Garrigue</p>
+                    </div>
+                </article>
+            </div>
+
+            <ul class="flex flex-col gap-6 md:flex-row">
+                <li
+                    class="flex flex-col rounded-xl border border-neutral-400 bg-neutral-50 px-4 py-5 shadow-lg md:flex-1"
+                >
+                    <div class="flex flex-row justify-between">
+                        <div class="flex flex-row items-center gap-2">
+                            <div class="bg-terracotta-600 rounded-lg p-2">
+                                <img src="/assets/images/icon-key.svg" class="size-6" />
+                            </div>
+                            <span
+                                class="text-terracotta-600 font-mono font-medium tracking-wider uppercase"
+                            >
+                                Arrival
+                            </span>
+                        </div>
+                        <p
+                            class="text-terracotta-600 font-base text-2xl font-medium tracking-wider uppercase"
+                        >
+                            01
+                        </p>
+                    </div>
+
+                    <h2 class="font-base mt-4 text-3xl">Check-in from 15:00</h2>
+                    <span class="mt-2 text-sm text-neutral-600">Sat, 25 April</span>
+
+                    <p class="mt-4 text-neutral-800">
+                        Ring the brass bell by the blue door. If we're at the market, the key is in
+                        the terracotta pot by the olive tree.
+                    </p>
+                </li>
+
+                <li
+                    class="flex flex-col rounded-xl border border-neutral-400 bg-neutral-50 px-4 py-5 shadow-lg md:flex-1"
+                >
+                    <div class="flex flex-row justify-between">
+                        <div class="flex flex-row items-center gap-2">
+                            <div class="rounded-lg bg-blue-500 p-2">
+                                <img src="/assets/images/icon-wifi.svg" class="size-6" />
+                            </div>
+                            <span
+                                class="font-mono font-medium tracking-wider text-blue-500 uppercase"
+                            >
+                                WiFi
+                            </span>
+                        </div>
+                        <p
+                            class="font-base text-2xl font-medium tracking-wider text-blue-500 uppercase"
+                        >
+                            02
+                        </p>
+                    </div>
+
+                    <h2 class="font-base mt-4 text-3xl">Le Soleil · Guest</h2>
+                    <span class="mt-2 text-sm text-neutral-600">Password below</span>
+
+                    <div class="mt-4 flex flex-col gap-y-1">
+                        <div class="flex flex-row justify-between rounded-lg bg-neutral-200 p-2">
+                            <span class="font-medium tracking-widest text-neutral-600 uppercase">
+                                Network
+                            </span>
+                            <span>Le Soleil · Guest</span>
+                        </div>
+
+                        <div class="flex flex-row justify-between rounded-lg bg-neutral-200 p-2">
+                            <span class="font-medium tracking-widest text-neutral-600 uppercase">
+                                Password
+                            </span>
+                            <div class="flex flex-row items-center gap-x-2">
+                                <span>soleil-2026</span>
+                                <button
+                                    class="rounded-full border border-neutral-400 px-2 text-sm text-neutral-600 uppercase hover:bg-neutral-400"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li
+                    class="flex flex-col rounded-xl border border-neutral-400 bg-neutral-50 px-4 py-5 shadow-lg md:flex-1"
+                >
+                    <div class="flex flex-row justify-between">
+                        <div class="flex flex-row items-center gap-2">
+                            <div class="rounded-lg bg-rose-500 p-2">
+                                <img src="/assets/images/icon-breakfast.svg" class="size-6" />
+                            </div>
+                            <span
+                                class="font-mono font-medium tracking-wider text-rose-500 uppercase"
+                            >
+                                Breakfast
+                            </span>
+                        </div>
+                        <p
+                            class="font-base text-2xl font-medium tracking-wider text-rose-500 uppercase"
+                        >
+                            03
+                        </p>
+                    </div>
+
+                    <h2 class="font-base mt-4 text-3xl">Served 8 - 10:30</h2>
+                    <span class="mt-1 text-sm text-neutral-600">on the terrance</span>
+                    <p class="mt-4 text-neutral-800">
+                        Fresh figs, Marseille honey, pain au levain, and espresso. Gluten-free
+                        option? Leave a note the night before.
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

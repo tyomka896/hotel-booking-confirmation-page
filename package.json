@@ -1,0 +1,22 @@
+{
+  "name": "hotel-booking-confirmation-page",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "alpinejs": "^3.17.5",
+    "tailwindcss": "^4.3.3"
+  }
+}
