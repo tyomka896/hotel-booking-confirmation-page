@@ -7,41 +7,95 @@
 
         <title>Hotel booking confirmation page</title>
     </head>
-    <body
-        class="grid min-h-screen grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[auto_1fr] lg:grid-rows-1"
-    >
-        <header class="border-b border-neutral-400 px-4 py-5 lg:w-70 lg:border-r">
-            <div class="flex flex-row items-center justify-between">
+    <body class="min-h-screen lg:grid lg:grid-cols-[auto_1fr] lg:grid-rows-1">
+        <header
+            id="header"
+            class="sticky top-0 z-50 h-22 border-b border-neutral-400 bg-neutral-100 px-4 py-5 lg:flex lg:h-dvh lg:w-70 lg:flex-col lg:self-start lg:border-r lg:border-b-0 lg:pb-0"
+        >
+            <div class="z-50 flex flex-row items-center justify-between">
                 <img src="/assets/images/logo.svg" class="h-12" />
 
                 <button
-                    class="flex size-10 items-center justify-center rounded-md border border-neutral-400 lg:hidden"
+                    id="menu-button"
+                    type="button"
+                    class="group flex size-10 items-center justify-center rounded-md border border-neutral-400 lg:hidden"
                 >
-                    <img src="/assets/images/icon-menu.svg" class="size-6" />
+                    <img
+                        src="/assets/images/icon-menu.svg"
+                        class="block size-6 group-[.is-open]:hidden"
+                    />
+                    <img
+                        src="/assets/images/icon-close.svg"
+                        class="hidden size-6 group-[.is-open]:block"
+                    />
                 </button>
             </div>
 
-            <nav class="">
-                <ul x-data="navLinks">
-                    <template x-for="link in links" :key="link.text">
-                        <li>
-                            <a :href="`#${link.href}`" class="flex flex-row items-center p-2">
-                                <img :src="`/assets/images/${link.icon}`" class="mr-2 size-6" />
-                                <span x-text="link.text"></span>
-                            </a>
-                        </li>
-                    </template>
-                </ul>
+            <nav
+                id="nav-menu"
+                class="fixed inset-x-0 top-22 bottom-0 z-40 hidden flex-col overflow-y-auto bg-neutral-100 px-4 py-4 lg:static lg:inset-auto lg:flex lg:flex-1 lg:px-0"
+            >
+                <div class="flex min-h-full flex-col justify-between">
+                    <ul x-data="navLinks" class="flex flex-col gap-y-1">
+                        <template x-for="link in links" :key="link.text">
+                            <li class="hover:bg-neutral-0 rounded-lg">
+                                <a
+                                    :href="`#${link.href}`"
+                                    class="flex flex-row items-center px-3 py-2"
+                                >
+                                    <img :src="`/assets/images/${link.icon}`" class="mr-2 size-6" />
+                                    <span x-text="link.text"></span>
 
-                <!-- Local weather -->
-                Today in Cassis 27° Sunny · light breeze Est. 1987 Maison Soleil · 12 Rue des
-                Oliviers · Cassis © 2026 Maison Soleil
+                                    <template x-if="link.extra">
+                                        <span
+                                            x-text="link.extra"
+                                            class="bg-terracotta-700 ml-auto grid size-5 place-items-center rounded-full p-1 text-[.65rem] text-neutral-100"
+                                        ></span>
+                                    </template>
+                                </a>
+                            </li>
+                        </template>
+                    </ul>
+
+                    <div class="flex flex-col gap-y-4">
+                        <div
+                            class="bg-sun-300 relative max-w-80 overflow-hidden rounded-xl px-4 py-2"
+                        >
+                            <span class="font-mono text-xs text-neutral-600 uppercase">
+                                Today in Cassis
+                            </span>
+                            <h2 class="font-base text-3xl">27°</h2>
+                            <span class="text-sm text-neutral-800">Sunny · light breeze</span>
+
+                            <img
+                                src="/assets/images/icon-weather.svg"
+                                class="absolute -top-8 -right-2 size-20"
+                            />
+                        </div>
+
+                        <hr class="border-dashed opacity-10" />
+
+                        <div class="flex flex-col gap-y-2">
+                            <span class="font-mono text-xs text-neutral-600 uppercase">
+                                Est. 1987
+                            </span>
+                            <span class="font-mono text-xs text-neutral-600 uppercase">
+                                Maison Soleil · 12 Rue des Oliviers · Cassis
+                            </span>
+                            <span class="font-mono text-xs text-neutral-600 uppercase">
+                                © 2026 Maison Soleil
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </nav>
         </header>
 
         <section class="mx-auto w-full max-w-7xl space-y-16 px-4 py-6">
             <div class="space-y-4">
-                <div class="font-mono text-neutral-600 uppercase">Booking · Confirmed</div>
+                <div class="font-mono tracking-widest text-neutral-600 uppercase">
+                    Booking · Confirmed
+                </div>
 
                 <div class="flex flex-col justify-between gap-y-6 md:flex-row">
                     <p class="font-base flex gap-x-2 text-5xl font-medium">
@@ -62,7 +116,7 @@
             </div>
 
             <div
-                class="group relative mx-auto grid max-w-4xl cursor-pointer grid-cols-1 grid-rows-2 justify-items-center gap-y-10 px-2 xl:grid-cols-2 xl:grid-rows-1 xl:overflow-visible"
+                class="group relative mx-auto grid max-w-4xl cursor-pointer grid-cols-1 grid-rows-2 justify-items-center gap-y-6 px-2 xl:grid-cols-2 xl:grid-rows-1 xl:overflow-visible"
             >
                 <div
                     class="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 xl:block"
@@ -71,7 +125,7 @@
                 </div>
 
                 <article
-                    class="shadow-neutral-warm order-2 flex w-full max-w-140 min-w-80 -rotate-2 flex-col space-y-4 rounded-xl bg-neutral-50 p-6 duration-150 xl:order-1 xl:-mr-2 xl:-rotate-3 xl:transition-[translate,rotate] xl:group-hover:-translate-x-28 xl:group-hover:rotate-3"
+                    class="shadow-neutral-warm order-2 flex w-full max-w-120 min-w-80 -rotate-2 flex-col space-y-4 rounded-xl bg-neutral-50 p-6 duration-150 xl:order-1 xl:-mr-2 xl:-rotate-3 xl:transition-[translate,rotate] xl:group-hover:-translate-x-28 xl:group-hover:rotate-3"
                 >
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col gap-y-1">
@@ -131,7 +185,7 @@
 
                     <div class="flex flex-col justify-between gap-y-6">
                         <div class="flex flex-row items-center justify-between">
-                            <span class="font-mono text-neutral-600 uppercase"> Total paid </span>
+                            <span class="font-mono text-neutral-600 uppercase">Total paid</span>
                             <span class="font-base text-2xl">€ 730.40</span>
                         </div>
 
@@ -145,7 +199,7 @@
                 </article>
 
                 <article
-                    class="bg-terracotta-700 bg-glow-warm shadow-terracotta-warm flex w-full max-w-140 min-w-80 rotate-2 flex-col space-y-4 rounded-xl p-6 text-neutral-100 xl:order-2 xl:-ml-2 xl:rotate-3 xl:transition-[translate,rotate] xl:group-hover:translate-x-28 xl:group-hover:-rotate-3"
+                    class="bg-terracotta-700 bg-glow-warm shadow-terracotta-warm flex w-full max-w-120 min-w-80 rotate-2 flex-col space-y-4 rounded-xl p-6 text-neutral-100 xl:order-2 xl:-ml-2 xl:rotate-3 xl:transition-[translate,rotate] xl:group-hover:translate-x-28 xl:group-hover:-rotate-3"
                 >
                     <hr class="border-dashed opacity-30" />
 

@@ -8,3 +8,12 @@ window.Alpine = Alpine;
 Alpine.data("navLinks", navLinks);
 Alpine.data("heroButtons", heroButtons);
 Alpine.start();
+
+const menuButton = document.querySelector("#menu-button")!;
+const navMenu = document.querySelector("#nav-menu")!;
+
+menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.classList.toggle("is-open");
+    navMenu.classList.toggle("hidden", !isOpen);
+    document.body.classList.toggle("overflow-hidden", isOpen);
+});

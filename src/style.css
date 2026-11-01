@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "DM Mono";
-    src: url("/public/assets/fonts/dm-mono/DMMono-Regular.ttf");
+    src: url("/assets/fonts/dm-mono/DMMono-Regular.ttf");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: "DM Mono";
-    src: url("/public/assets/fonts/dm-mono/DMMono-Medium.ttf");
+    src: url("/assets/fonts/dm-mono/DMMono-Medium.ttf");
     font-weight: 500;
     font-style: normal;
     font-display: swap;

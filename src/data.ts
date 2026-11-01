@@ -2,11 +2,12 @@ interface NavLinks {
     text: string;
     href: string;
     icon: string;
+    extra?: number;
 }
 
 export const navLinks = (): { links: NavLinks[] } => ({
     links: [
-        { text: "Your stay", href: "your-say", icon: "icon-bed.svg" },
+        { text: "Your stay", href: "your-say", icon: "icon-bed.svg", extra: 1 },
         { text: "The house", href: "the-house", icon: "icon-house.svg" },
         { text: "Around town", href: "around-town", icon: "icon-pin.svg" },
         {
@@ -14,7 +15,7 @@ export const navLinks = (): { links: NavLinks[] } => ({
             href: "breakfast",
             icon: "icon-breakfast-outline.svg",
         },
-        { text: "Messages", href: "messages", icon: "icon-mail.svg" },
+        { text: "Messages", href: "messages", icon: "icon-mail.svg", extra: 31 },
     ],
 });
 
