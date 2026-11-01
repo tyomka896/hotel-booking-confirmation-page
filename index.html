@@ -38,10 +38,11 @@
                 <div class="flex min-h-full flex-col justify-between">
                     <ul x-data="navLinks" class="flex flex-col gap-y-1">
                         <template x-for="link in links" :key="link.text">
-                            <li class="hover:bg-neutral-0 rounded-lg">
+                            <li>
                                 <a
                                     :href="`#${link.href}`"
-                                    class="flex flex-row items-center px-3 py-2"
+                                    class="hover:bg-neutral-0 flex flex-row items-center rounded-lg px-3 py-2"
+                                    :class="link.active && 'bg-neutral-0'"
                                 >
                                     <img :src="`/assets/images/${link.icon}`" class="mr-2 size-6" />
                                     <span x-text="link.text"></span>

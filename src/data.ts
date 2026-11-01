@@ -2,20 +2,40 @@ interface NavLinks {
     text: string;
     href: string;
     icon: string;
+    active?: boolean;
     extra?: number;
 }
 
 export const navLinks = (): { links: NavLinks[] } => ({
     links: [
-        { text: "Your stay", href: "your-say", icon: "icon-bed.svg", extra: 1 },
-        { text: "The house", href: "the-house", icon: "icon-house.svg" },
-        { text: "Around town", href: "around-town", icon: "icon-pin.svg" },
+        {
+            text: "Your stay",
+            href: "your-say",
+            icon: "icon-bed.svg",
+            active: true,
+            extra: 1,
+        },
+        {
+            text: "The house",
+            href: "the-house",
+            icon: "icon-house.svg",
+        },
+        {
+            text: "Around town",
+            href: "around-town",
+            icon: "icon-pin.svg",
+        },
         {
             text: "Breakfast",
             href: "breakfast",
             icon: "icon-breakfast-outline.svg",
         },
-        { text: "Messages", href: "messages", icon: "icon-mail.svg", extra: 31 },
+        {
+            text: "Messages",
+            href: "messages",
+            icon: "icon-mail.svg",
+            extra: 31,
+        },
     ],
 });
 
