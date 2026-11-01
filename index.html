@@ -44,7 +44,10 @@
                                     class="hover:bg-neutral-0 flex flex-row items-center rounded-lg px-3 py-2"
                                     :class="link.active && 'bg-neutral-0'"
                                 >
-                                    <img :src="`/assets/images/${link.icon}`" class="mr-2 size-6" />
+                                    <img
+                                        :src="`./assets/images/${link.icon}`"
+                                        class="mr-2 size-6"
+                                    />
                                     <span x-text="link.text"></span>
 
                                     <template x-if="link.extra">
